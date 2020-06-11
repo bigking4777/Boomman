@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="57628eac-25f5-4dcc-b098-4a0de8d2aafe" name="boomMan" url="http://121.199.17.241">
+        <fileTransfer host="121.199.17.241" port="20" rootFolder="/www/wwwroot/121.199.17.241" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="20" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

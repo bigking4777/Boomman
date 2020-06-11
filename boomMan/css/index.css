@@ -1,0 +1,97 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.main{
+    width: 1200px;
+    height: 900px;
+    border: 1px solid black;
+    margin: auto;
+    background: beige;
+}
+.title{
+    display: flex;
+    width: 100%;
+}
+.title div{
+    flex: 1;
+    height: 200px;
+    font-size: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fe9738;
+}
+.player{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.player div{
+    display: none;
+}
+.player .show{
+    display: block;
+}
+.change{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+.playerTitle,.add,.min{
+    width: 200px;
+    height: 100px;
+    border-radius:90px ;
+    background: #2277aa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fe9738;
+    font-size: 30px;
+}
+.start{
+    width: 200px;
+    height: 100px;
+    border-radius:90px ;
+    background: #2277aa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fe9738;
+    font-size: 30px;
+    margin: 20px auto;
+}
+.changePass{
+    width: 200px;
+    height: 100px;
+    border-radius:90px ;
+    background: #2277aa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fe9738;
+    font-size: 30px;
+    margin: 10px auto;
+}
+.pass{
+    width: 100%;
+    display: flex;
+}
+.pass div{
+    width: 50px;
+    height: 50px;
+    border-radius:9px ;
+    background: #2277aa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fe9738;
+    margin: 10px auto;
+}
+.pass .passShow{
+    background: #fe9738;
+    color: white;
+}

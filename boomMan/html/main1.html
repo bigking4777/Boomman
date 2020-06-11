@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <script src="../js/Game.js"></script>
+    <script src="../js/Map.js"></script>
+    <script src="../js/Cell.js"></script>
+    <script src="../js/Player.js"></script>
+    <script src="../js/Enemy.js"></script>
+    <script src="../js/Boom.js"></script>
+    <script src="../js/prop.js"></script>
+    <script src="../js/Time.js"></script>
+    <script src="../js/Score.js"></script>
+    <script src="../js/Changeplayer.js"></script>
+
+</head>
+<body>
+<div class="all">
+    <div class="left">
+        <div class="left-title">
+            <h1>第一关，过关条件：分数达到50</h1>
+        </div>
+        <h2>道具效果</h2>
+        <div class="allTool">
+
+            <div class="tool">
+                <img src="../img/tool_01.png"  width="30px" alt="">
+                <p>增加爆炸直径</p>
+            </div>
+            <div class="tool">
+                <img src="../img/tool_02.png"  width="30px" alt="">
+                <p>分数加60</p>
+            </div>
+            <div class="tool">
+                <img src="../img/tool_03.png"  width="30px" alt="">
+                <p>时间增加30s</p>
+            </div>
+            <div class="tool">
+                <img src="../img/tool_04.png"  width="30px" alt="">
+                <p>人物移速增加</p>
+            </div>
+            <div class="tool">
+                <img src="../img/tool_05.png"  width="30px" alt="">
+                <p>炸弹数量增加</p>
+            </div>
+
+        </div>
+        <h2>人物操作</h2>
+        <div class="all-operate">
+            <div class="operate">
+                <div class="operate-top">
+                    <img src="../img/up.png" width="60px" alt="">
+                </div>
+                <div class="operate-bottom">
+                    <div>
+                        <img src="../img/left.png" width="60px" alt="">
+                    </div>
+                    <div>
+                        <img src="../img/down.png" width="60px" alt="">
+                    </div>
+                    <div>
+                        <img src="../img/right.png" width="60px" alt="">
+                    </div>
+
+                </div>
+                <p>上下左右操控玩家移动</p>
+
+
+            </div>
+
+            <div class="operate-kong">
+                <img src="../img/kong.png" width="200px" height="60px" alt="">
+                <p class="kong-p">空格操控玩家放置炸弹</p>
+            </div>
+
+        </div>
+
+
+    </div>
+    <div class="main" id="box">
+    <canvas id="mycanvas" width=680 height=600>
+
+    </canvas>
+</div>
+
+</div>
+<audio id="backMusic"  autoplay loop>
+    <source src="../music/backMusic.mp3" type="audio/mpeg">
+</audio>
+<div class="gameOver">
+    <div class="title">恭喜过关</div>
+    <div class="next">
+        <div class="btn" id="nextPass">
+            下一关
+        </div>
+    </div>
+</div>
+<div class="timeOver">
+    <div class="title">时间耗尽游戏结束</div>
+    <div class="next">
+        <div class="btn" id="timeBack">
+            返回
+        </div>
+    </div>
+</div>
+<div class="playerOver">
+    <div class="title">人物死亡游戏结束</div>
+    <div class="next">
+        <div class="btn" id="playerBack">
+            返回
+        </div>
+    </div>
+</div>
+
+<script>
+    var url = window.location.href;
+    var playerNum = url.split('?')[1];//获得人物编号来获得人物颜色
+    var passNum1 = url.split('main')[1];
+    var passNum = passNum1.split('.')[0];//获得关卡编号来选择关卡
+    // console.log(playerNum,'url')
+    var game =new Game();//这里是游戏主逻辑
+    var enemyNum = 2;//怪物最多数量
+    var minNum = 1;//怪物最少数量
+    game.init(playerNum,enemyNum,minNum);//初始化游戏
+    setInterval('game.run()',100);//定时执行可以画出游戏数据在canvas标签上
+    setInterval('game.runEnemy()',1000);//画出怪物走动方向
+    setInterval('game.getProp()',300);//随机掉落道具
+    setInterval('game.getplayer()',10);//实时获得人物的坐标
+    document.onkeydown=function (ev) {
+        game.onkeydown(ev.keyCode);
+    };//获取键盘按下事件
+    document.onkeyup=function (ev) {
+        game.onkeyup(ev.keyCode);
+    };//获取键盘松开事件
+    var time = new Time();
+    time.init();//设置时间
+    setInterval('time.run()',1000);//判断时间是否超时
+    var score = new Score();
+    var passScore = 50;//过关分数设置
+    score.pass =passScore;
+    score.init(passScore);
+    var playerBack = document.getElementById('playerBack');
+    playerBack.onclick = function () {
+        window.location.href='index.html'
+    };//返回人物选择页面
+    var timeBack = document.getElementById('timeBack');
+    timeBack.onclick = function () {
+        window.location.href='index.html'
+    };//返回人物选择页面
+    var nextPass = document.getElementById('nextPass');
+    nextPass.onclick = function () {
+        passNum++;
+        window.location.href='main'+passNum+'.html'+'?'+playerNum;
+    };//进入下一关卡
+
+</script>
+
+</body>
+</html>
